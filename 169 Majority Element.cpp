@@ -2,7 +2,7 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        unordered_map<int, int> numToCount;
+        unordered_map<int, int> numToCount; //hash map
         for (int i = 0; i < nums.size(); i++) {
             if (numToCount.count(nums[i]) > 0) {
                 numToCount[nums[i]] += 1;
