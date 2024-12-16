@@ -1,0 +1,34 @@
+class Solution {
+public:
+    int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit) {
+        int n = startTime.size();
+        vector<vector<int> > jobs; 
+
+        for(int i = 0; i < n; i++) {
+            jobs.push_back({endTime.at(i), startTime.at(i), profit.at(i)});
+        }
+        sort(jobs.begin(), jobs.end()); //sorts by end time
+        map<int, int> dp = {{0, 0}};
+        for (auto& job : jobs) {
+            int cur = prev(dp.upper_bound(job.at(1)))->second + job.at(2);
+            //lets dissect this statement:
+            // job.at(1) is start time for the current job, while job.at(2) is the profit
+            // we call dp.upper_bound() on the start time, 
+            // * initially the map only has 0 => 0, but upper_bound() has a funny trick
+            // * if there is no element matching its parameter, it points to somewhere just after the map
+            // * sooooo by calling prev() on the element after we get a reference to the last element in the dp 
+            // * orrrr if the element exists we just get a reference to ourselves in the map
+            // Finally, we call ->second on the map reference to get the "value" (->first would be the key)
+            // and add it to the profit that can be made by accepting that job (this is doing the DP part)
+            if (cur > dp.rbegin()->second) { //rbegin() is a reverse iterator that points to end of the map
+                //so this is asking if our current profit from accepting this job would be better that what we had
+                dp[job.at(0)] = cur;
+                //if it is we make a new dp entry, which is at the end
+            }
+        }
+
+        cout << dp.size() << endl;
+        return dp.rbegin()->second; //return maps last value
+        
+    }
+};
