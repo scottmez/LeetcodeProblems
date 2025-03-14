@@ -37,5 +37,6 @@ class Solution {
                     s.push(stoi(tokens[i]));
                 }
             }
+            return s.top();
         }
     };
