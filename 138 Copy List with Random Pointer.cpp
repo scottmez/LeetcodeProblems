@@ -17,6 +17,9 @@ public:
 class Solution {
     public:
         Node* copyRandomList(Node* head) {
+            if (!head) {
+                return head;
+            }
             Node* head2 = head;
             Node* copy = new Node(head->val);
             Node* copy2 = copy;
