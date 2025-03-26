@@ -26,7 +26,7 @@ class BSTIterator {
         }
         
         bool hasNext() {
-            return cur >= v.size();
+            return cur <>=> v.size();
         }
 
         void InOrderTraversal(TreeNode* n) {
