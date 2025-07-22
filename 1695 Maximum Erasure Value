@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int maximumUniqueSubarray(vector<int>& nums) {
+        int left = 0;
+        int right = 1;
+        int curSum = nums.at(0);
+        int maxSum = curSum;
+        unordered_set<int> windowNums;
+        windowNums.insert(nums.at(left));
+        while (right < nums.size()) {
+            if (windowNums.count(nums.at(right))) { //right not unique
+                curSum -= nums.at(left);
+                windowNums.erase(nums.at(left));
+                left++;
+            }
+            else {
+                curSum += nums.at(right);
+                windowNums.insert(nums.at(right));
+                right++;
+                maxSum = max(curSum, maxSum);
+            }
+        }
+        return maxSum;
+    }
+};
