@@ -12,16 +12,16 @@ public:
             }
         }
         for (auto itr = rows.begin(); itr != rows.end(); ++itr) {
-            int j = *itr;
+            int i = *itr;
             for(int col = 0; col < matrix.at(0).size(); col++) {
-
+                matrix.at(i).at(col) = 0;
             }
         }
 
         for (auto itr = cols.begin(); itr != cols.end(); ++itr) {
-            int i = *itr;
+            int j = *itr;
             for(int row = 0; row < matrix.size(); row++) {
-                
+                matrix.at(row).at(j) = 0;
             }
         }
     }

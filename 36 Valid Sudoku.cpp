@@ -22,7 +22,7 @@ public:
                     auto itrC = cols.at(j).insert(t);
                     auto itrB = boxes.at(temp).insert(t);
                     if(!itrR.second || !itrC.second || !itrB.second) { //the itr_.second will be true if it was allowed to insert
-                        //if any are false, return alse
+                        //if any are false, return false
                         return false;
                     }
                 }

@@ -27,8 +27,6 @@ public:
             }
         }
 
-        cout << dp.size() << endl;
-        return dp.rbegin()->second; //return maps last value
-        
+        return dp.rbegin()->second; //return maps last value, i.e. the last one we added   
     }
 };
