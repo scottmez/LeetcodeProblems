@@ -23,7 +23,7 @@ public:
                     state = 0;
                 }
             }
-            cout << state << endl;
+            prev = num;
         }
         return count;
     }
