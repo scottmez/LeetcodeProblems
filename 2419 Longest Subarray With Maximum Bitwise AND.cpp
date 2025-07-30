@@ -13,11 +13,12 @@ public:
         for (int num : nums) {
             if (num == largest) {
                 cur_len += 1; 
+                max_len = max(cur_len, max_len);
             }
             else {
                 cur_len = 0;
             }
-            max_len = max(cur_len, max_len);
         }
+        return max_len;
     }
 };
